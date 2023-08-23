@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/widgets/custom_image.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -34,10 +35,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-                height: 120.h,
-                width: 120.w,
-                child: Image.asset(AppAssets.appLogo)),
+            CustomImage(
+              imgPath: AppAssets.appLogo,
+              h: 120.h,
+              w: 120.w,
+            ),
             SizedBox(
               height: 16.h,
             ),

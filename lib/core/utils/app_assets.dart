@@ -4,6 +4,6 @@ class AppAssets{
   static const String appLogoSVG='${basePath}logo_svg.png';
   static const String lock='${basePath}lock.png';
   static const String imagePicker='${basePath}image_picker.png';
-  static const String background='${basePath}background.png';
-  static const String backgroundTwo='${basePath}background_two.png';
+  static const String background='${basePath}backround.png';
+  static const String backgroundTwo='${basePath}backround_two.png';
 }
