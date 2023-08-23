@@ -1,3 +1,5 @@
+import 'package:chef_app/core/locale/app_locale.dart';
+import 'package:chef_app/core/utils/app_strings.dart';
 import 'package:chef_app/core/utils/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(
               height: 16.h,
             ),
-            Text('Chef App', style: Theme.of(context).textTheme.displayLarge),
+            Text(AppStrings.chefApp.tr(context), style: Theme.of(context).textTheme.displayLarge),
           ],
         ),
       ),
