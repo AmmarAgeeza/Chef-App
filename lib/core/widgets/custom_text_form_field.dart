@@ -34,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
           onPressed: suffixIconOnPressed,
           icon: Icon(
             icon,
+            color: AppColors.primary,
           ),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app/app.dart';
 import 'core/services/service_locator.dart';
+import 'features/auth/presentation/cubits/cubit/login_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,8 +13,15 @@ void main() async {
   await sl<CacheHelper>().init();
 
   runApp(
-    BlocProvider(
-      create: (context) => sl<GlobalCubit>()..getCachedLang(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<GlobalCubit>()..getCachedLang(),
+        ),
+        BlocProvider(
+          create: (context) => sl<LoginCubit>(),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
