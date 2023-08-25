@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/commons.dart';
+import '../../../../core/widgets/cusotm_lodaing_indicator.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../cubits/cubit/login_cubit.dart';
 
@@ -42,7 +44,17 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: BlocConsumer<LoginCubit, LoginState>(
-                  listener: (context, state) {},
+                  listener: (context, state) {
+                    if (state is LoginSucessState) {
+                      showToast(
+                          message: AppStrings.loginSucessfully.tr(context),
+                          state: ToastStates.success);
+                    }
+                    if (state is LoginErrorState) {
+                      showToast(
+                          message: state.message, state: ToastStates.error);
+                    }
+                  },
                   builder: (context, state) {
                     return Form(
                       key: BlocProvider.of<LoginCubit>(context).loginKey,
@@ -93,14 +105,20 @@ class LoginScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 32.h),
-                          CustomButton(
-                            onPressed: () {
-                              if(BlocProvider.of<LoginCubit>(context).loginKey.currentState!.validate()){
-                                print('login');
-                              }
-                            },
-                            text: AppStrings.signIn.tr(context),
-                          ),
+                          state is LoginLoadingState
+                              ? const CusotmLoadingIndicator()
+                              : CustomButton(
+                                  onPressed: () {
+                                    if (BlocProvider.of<LoginCubit>(context)
+                                        .loginKey
+                                        .currentState!
+                                        .validate()) {
+                                      BlocProvider.of<LoginCubit>(context)
+                                          .login();
+                                    }
+                                  },
+                                  text: AppStrings.signIn.tr(context),
+                                ),
                         ],
                       ),
                     );
