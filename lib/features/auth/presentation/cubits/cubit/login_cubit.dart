@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/database/api/end_points.dart';
+import '../../../../../core/database/cache/cache_helper.dart';
+import '../../../../../core/services/service_locator.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/repository/auth_repository.dart';
 import 'login_state.dart';
@@ -22,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   // login method
-  LoginModel? loginModel ;
+  LoginModel? loginModel;
   void login() async {
     emit(LoginLoadingState());
     final result = await authRepo.login(
@@ -31,8 +34,12 @@ class LoginCubit extends Cubit<LoginState> {
     );
     result.fold(
       (l) => emit(LoginErrorState(l)),
-      (r) {
-        loginModel=r;
+      (r) async {
+        loginModel = r;
+        await sl<CacheHelper>().saveData(
+          key: ApiKeys.token,
+          value: r.token,
+        );
         emit(LoginSucessState());
       },
     );
