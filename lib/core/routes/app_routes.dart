@@ -38,7 +38,7 @@ class AppRoutes {
       case Routes.sendCode:
         return MaterialPageRoute(builder: (_) => const SendCodeScreen());
       case Routes.restPassword:
-        return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
+        return MaterialPageRoute(builder: (_) =>  const ResetPasswordScreen());
 
       case Routes.menuHome:
         return MaterialPageRoute(builder: (_) => const MenuHomeScreen());
