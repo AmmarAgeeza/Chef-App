@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
 
@@ -28,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: validate,
       obscureText: isPassword,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
         hintText: hint,
         labelText: lable,
         suffixIcon: IconButton(

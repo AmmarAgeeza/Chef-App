@@ -1,17 +1,18 @@
 import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:chef_app/core/widgets/custom_button.dart';
 import 'package:chef_app/core/widgets/custom_image.dart';
-import 'package:chef_app/features/auth/presentation/cubits/cubit/login_state.dart';
+import 'package:chef_app/features/auth/presentation/cubits/login_cubit/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/commons.dart';
 import '../../../../core/widgets/cusotm_lodaing_indicator.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
-import '../cubits/cubit/login_cubit.dart';
+import '../cubits/login_cubit/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -99,8 +100,14 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(height: 24.h),
                           Row(
                             children: [
-                              Text(
-                                AppStrings.forgetPassword.tr(context),
+                              TextButton(
+                                onPressed: () {
+                                  navigate(
+                                      context: context, route: Routes.sendCode);
+                                },
+                                child: Text(
+                                  AppStrings.forgetPassword.tr(context),
+                                ),
                               ),
                             ],
                           ),
