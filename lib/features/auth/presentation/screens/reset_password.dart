@@ -22,6 +22,9 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       //appbar
       appBar: AppBar(
+        leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: (){
+          navigateRepacement(context: context, route: Routes.sendCode);
+        },),
         title: Text(
           AppStrings.createYourNewPassword.tr(
             context,
@@ -36,7 +39,7 @@ class ResetPasswordScreen extends StatelessWidget {
               //1.show message
               showToast(message: state.message, state: ToastStates.success);
               //2.navigate to login screen
-              navigate(context: context, route: Routes.login);
+              navigateRepacement(context: context, route: Routes.login);
             }
           },
           builder: (context, state) {

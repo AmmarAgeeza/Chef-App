@@ -102,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  navigate(
+                                  navigateRepacement(
                                       context: context, route: Routes.sendCode);
                                 },
                                 child: Text(
