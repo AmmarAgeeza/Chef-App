@@ -3,6 +3,7 @@ import 'package:chef_app/core/database/api/api_consumer.dart';
 import 'package:chef_app/core/database/api/dio_consumer.dart';
 import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:chef_app/features/auth/data/repository/auth_repository.dart';
+import 'package:chef_app/features/home/home_cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -15,6 +16,7 @@ void initServiceLoactor(){
 sl.registerLazySingleton(()=> GlobalCubit());  
 sl.registerLazySingleton(()=> LoginCubit(sl()));  
 sl.registerLazySingleton(()=> ForgetPasswordCubit(sl()));  
+sl.registerLazySingleton(()=> HomeCubit());  
 
 //auth feature 
 sl.registerLazySingleton(() => AuthRepository());

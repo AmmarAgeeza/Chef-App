@@ -18,7 +18,6 @@
     "oldPassword": "كلمة المرور القديمة",
     "code": "الكود",
     "description": "اكتب بعض الوصف",
-    "profile": "الملف الشخصي",
     "confirm": "تأكيد",
     "editProfile": "تعديل الملف الشخصي",
     "loginSucessfully": "تم تسجيل الدخول بنجاح",
@@ -61,5 +60,7 @@
     "passwordChangedSucessfully": "تم تغير كلمة السر",
     "pleaseEnterValidNumber": "من فضلك أدخل رقم صحيح",
     "camera": "الكامير",
-    "gallery": "المعرض"
+    "gallery": "المعرض",
+    "menu": "المينيو",
+    "profile": "الملف الشخصي"
 }

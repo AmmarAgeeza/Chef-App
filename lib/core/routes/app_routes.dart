@@ -3,6 +3,7 @@ import 'package:chef_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:chef_app/features/auth/presentation/screens/reset_password.dart';
 import 'package:chef_app/features/auth/presentation/screens/send_code_screen.dart';
 import 'package:chef_app/features/auth/presentation/screens/splash_screen.dart';
+import 'package:chef_app/features/home/screens/home_screen.dart';
 import 'package:chef_app/features/menu/presentation/screens/add_meal_screen.dart';
 import 'package:chef_app/features/menu/presentation/screens/menu_home.dart';
 import 'package:chef_app/features/profile/presentation/screens/change_password_screen.dart';
@@ -23,13 +24,14 @@ class Routes {
   static const String updateProfile = '/updateProfile';
   static const String setting = '/setting';
   static const String changePassword = '/changePassword';
+  static const String home = '/home';
 }
 
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.intitlRoute:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       case Routes.changeLang:
         return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
@@ -53,6 +55,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case Routes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(

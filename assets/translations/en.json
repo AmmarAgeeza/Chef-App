@@ -20,7 +20,6 @@
     "oldPassword": "Old Password",
     "code": "Code",
     "description": "Write some Description",
-    "profile": "Profile",
     "confirm": "Confirm",
     "please_enter_email": "Please Enter valid E-mail",
     "please_enter_valid_password": "Please Enter valid password",
@@ -61,5 +60,7 @@
     "passwordChangedSucessfully": "Password Changed Sucessfully",
     "pleaseEnterValidNumber": "Please Enter Valid Number",
     "camera": "Camera",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "menu": "Menu",
+    "profile": "Profile"
 }
