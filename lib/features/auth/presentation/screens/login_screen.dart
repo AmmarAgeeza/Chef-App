@@ -50,6 +50,7 @@ class LoginScreen extends StatelessWidget {
                       showToast(
                           message: AppStrings.loginSucessfully.tr(context),
                           state: ToastStates.success);
+                          navigateRepacement(context: context, route: Routes.home);
                     }
                     if (state is LoginErrorState) {
                       showToast(

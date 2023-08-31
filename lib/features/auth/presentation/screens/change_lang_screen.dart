@@ -6,8 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/bloc/cubit/global_cubit.dart';
 import '../../../../core/bloc/cubit/global_state.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/commons.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_image.dart';
 
@@ -63,6 +65,8 @@ class ChangeLangScreen extends StatelessWidget {
                             text: 'English',
                             onPressed: () {
                               BlocProvider.of<GlobalCubit>(context).changeLang('en');
+                                                            navigate(context: context, route: Routes.login);
+
                             },
                             width: 140,
                             background: AppColors.black,
@@ -72,6 +76,7 @@ class ChangeLangScreen extends StatelessWidget {
                             text: 'العربية',
                             onPressed: () {
                               BlocProvider.of<GlobalCubit>(context).changeLang('ar');
+                              navigate(context: context, route: Routes.login);
                             },
                             width: 140,
                             background: AppColors.black,

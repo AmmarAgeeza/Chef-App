@@ -31,7 +31,7 @@ class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.intitlRoute:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
 
       case Routes.changeLang:
         return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
