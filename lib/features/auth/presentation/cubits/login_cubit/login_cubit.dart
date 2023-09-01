@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../../../../../core/database/api/end_points.dart';
 import '../../../../../core/database/cache/cache_helper.dart';
@@ -36,6 +37,12 @@ class LoginCubit extends Cubit<LoginState> {
       (l) => emit(LoginErrorState(l)),
       (r) async {
         loginModel = r;
+        Map<String, dynamic> decodedToken = JwtDecoder.decode(r.token);
+        await sl<CacheHelper>().saveData(
+            key: ApiKeys.id,
+            value: decodedToken[ApiKeys
+                .id]); // {id: 6498d8d963385b3f9a0bcf3c, email: anas423999@gmail.com, name: Anas, iat: 1688680561}
+
         await sl<CacheHelper>().saveData(
           key: ApiKeys.token,
           value: r.token,

@@ -1,10 +1,12 @@
+import 'package:chef_app/features/menu/data/repository/menu_repository.dart';
 import 'package:chef_app/features/menu/presentation/cubit/menu_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MenuCubit extends Cubit<MenuState> {
-  MenuCubit() : super(MenuInitial());
+  MenuCubit(this.menuRepository) : super(MenuInitial());
+  final MenuRepository menuRepository; 
   XFile? image;
   TextEditingController mealNameController = TextEditingController();
   TextEditingController mealPriceController = TextEditingController();
