@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/widgets/custom_cached_network_image.dart';
 
 class MenuItemComponent extends StatelessWidget {
   const MenuItemComponent({
@@ -16,7 +18,13 @@ class MenuItemComponent extends StatelessWidget {
         SizedBox(
           height: 60.h,
           width: 60.w,
-          child: Image.network(''),
+          child: const CustomCachedNetworkImage(
+            imgUrl:
+                'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?cs=srgb&dl=pexels-ella-olsson-1640772.jpg&fm=jpg',
+          ),
+          // Image.network(
+          //   'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?cs=srgb&dl=pexels-ella-olsson-1640772.jpg&fm=jpg',
+          // ),
         ),
         SizedBox(
           width: 8.w,
