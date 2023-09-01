@@ -1,7 +1,9 @@
+import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_alert_dialog.dart';
 import '../../../../core/widgets/custom_cached_network_image.dart';
 
@@ -43,7 +45,7 @@ class MenuItemComponent extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return CustomAlertDialog(
-                    message: 'حذف الوجبة',
+                    message: AppStrings.deleteMeal.tr(context),
                     confirmAction: () {},
                   );
                 });

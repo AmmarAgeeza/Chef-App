@@ -62,5 +62,7 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "menu": "Menu",
-    "profile": "Profile"
+    "profile": "Profile",
+    "deleteMeal":"Delete Meal",
+    "category":"Category"
 }

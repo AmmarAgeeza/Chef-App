@@ -1,6 +1,8 @@
 import 'package:chef_app/core/locale/app_locale.dart';
+import 'package:chef_app/core/utils/commons.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../components/menu_item_component.dart';
@@ -18,7 +20,9 @@ class MenuHomeScreen extends StatelessWidget {
             children: [
               // add dish to menu button
               CustomButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigate(context: context, route: Routes.addMeal);
+                },
                 text: AppStrings.addDishToMenu.tr(context),
               ),
               //items

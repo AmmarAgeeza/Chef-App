@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app/app.dart';
 import 'core/services/service_locator.dart';
 import 'features/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import 'features/menu/presentation/cubit/menu_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => sl<HomeCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<MenuCubit>(),
         ),
       ],
       child: const MyApp(),

@@ -9,6 +9,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/auth/presentation/cubits/forget_password_cubit/forget_password_cubit.dart';
 import '../../features/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import '../../features/menu/presentation/cubit/menu_cubit.dart';
 
 final sl = GetIt.instance;
 void initServiceLoactor(){
@@ -17,6 +18,7 @@ sl.registerLazySingleton(()=> GlobalCubit());
 sl.registerLazySingleton(()=> LoginCubit(sl()));  
 sl.registerLazySingleton(()=> ForgetPasswordCubit(sl()));  
 sl.registerLazySingleton(()=> HomeCubit());  
+sl.registerLazySingleton(()=> MenuCubit());  
 
 //auth feature 
 sl.registerLazySingleton(() => AuthRepository());

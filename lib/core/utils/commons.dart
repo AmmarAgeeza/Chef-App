@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'app_colors.dart';
 
@@ -14,6 +15,7 @@ void navigate({
     arguments: arg,
   );
 }
+
 void navigateRepacement({
   required BuildContext context,
   required String route,
@@ -25,6 +27,7 @@ void navigateRepacement({
     arguments: arg,
   );
 }
+
 void showToast({
   required String message,
   required ToastStates state,
@@ -49,5 +52,14 @@ Color getState(ToastStates state) {
       return AppColors.green;
     case ToastStates.warining:
       return AppColors.primary;
+  }
+}
+
+Future<XFile?> pickImage(ImageSource source) async {
+  XFile? image = await ImagePicker().pickImage(source: source);
+  if (image != null) {
+    return image;
+  } else {
+    return null;
   }
 }
