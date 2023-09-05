@@ -1,5 +1,4 @@
 import 'package:chef_app/core/locale/app_locale.dart';
-import 'package:chef_app/core/widgets/cusotm_lodaing_indicator.dart';
 import 'package:chef_app/features/menu/data/models/meal_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,16 +33,31 @@ class MenuItemComponent extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(model.name),
-            Text(model.description),
-            Text(model.price.toString()),
+            // Text(model.name),
+             CustomTextMealComponent(text: model.name),
+             CustomTextMealComponent(text: model.description),
+            // SizedBox(
+            //   width: 180.w,
+            //   child: Text(
+            //     model.description,
+            //     overflow: TextOverflow.ellipsis,
+            //   ),
+            // ),
+            // Container(
+            //   constraints: BoxConstraints(maxWidth: 180.w),
+            //   child: Text(
+            //     model.description,
+            //     overflow: TextOverflow.ellipsis,
+            //   ),
+            // ),
+            Text(model.price.toString() + AppStrings.le.tr(context)),
           ],
         ),
 
         const Spacer(),
         BlocConsumer<MenuCubit, MenuState>(
           builder: (context, state) {
-            return  IconButton(
+            return IconButton(
               onPressed: () {
                 showDialog(
                     context: context,
@@ -53,7 +67,7 @@ class MenuItemComponent extends StatelessWidget {
                         confirmAction: () {
                           BlocProvider.of<MenuCubit>(context)
                               .deleteDish(model.id);
-                              Navigator.pop(context);
+                          Navigator.pop(context);
                         },
                       );
                     });
@@ -64,14 +78,35 @@ class MenuItemComponent extends StatelessWidget {
                 size: 40,
               ),
             );
-          }, listener: (BuildContext context, MenuState state) { 
-            if(state is DeleteDishSucessState){
+          },
+          listener: (BuildContext context, MenuState state) {
+            if (state is DeleteDishSucessState) {
               BlocProvider.of<MenuCubit>(context).getAllMeals();
             }
-           },
+          },
         ),
       ],
     );
+  }
+}
+
+class CustomTextMealComponent extends StatelessWidget {
+  const CustomTextMealComponent({
+    super.key,
+    required this.text,
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+     constraints: BoxConstraints(maxWidth: 180.w),
+     child: Text(
+       text,
+       overflow: TextOverflow.ellipsis,
+     ),
+            );
   }
 }
 //1.naviagtor.pop

@@ -64,5 +64,6 @@
     "menu": "المينيو",
     "profile": "الملف الشخصي",
     "deleteMeal":"حذف الوجبة",
-    "category":"الفئة"
+    "category":"الفئة",
+    "noMeals":"لا يوجد وجبات"
 }

@@ -64,5 +64,6 @@
     "menu": "Menu",
     "profile": "Profile",
     "deleteMeal":"Delete Meal",
-    "category":"Category"
+    "category":"Category",
+    "noMeals":"No Meals Found"
 }

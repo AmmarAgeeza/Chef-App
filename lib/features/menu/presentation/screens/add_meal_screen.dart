@@ -1,12 +1,10 @@
 import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:chef_app/core/widgets/cusotm_lodaing_indicator.dart';
-import 'package:chef_app/core/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/commons.dart';

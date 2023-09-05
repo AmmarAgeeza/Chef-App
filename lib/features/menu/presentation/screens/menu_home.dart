@@ -36,7 +36,7 @@ class MenuHomeScreen extends StatelessWidget {
 
                   return Expanded(
                     child: state is GetAllChefMealsLoadingState? const CusotmLoadingIndicator():menuCubit.meals.isEmpty
-                        ? const Text('No Meals')
+                        ?  Center(child: Text(AppStrings.noMeals.tr(context)))
                         : ListView.builder(
                             itemCount: menuCubit.meals.length,
                             itemBuilder: (context, index) =>  Padding(

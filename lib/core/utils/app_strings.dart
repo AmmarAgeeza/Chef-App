@@ -72,4 +72,5 @@ class AppStrings {
   static const String cancel = 'cancel';
   static const String deleteMeal = 'deleteMeal';
   static const String category = 'category';
+  static const String noMeals = 'noMeals';
 }
