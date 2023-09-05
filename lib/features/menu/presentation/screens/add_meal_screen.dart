@@ -11,6 +11,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/commons.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_file_image.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../components/image_picker_dialog.dart';
 import '../cubit/menu_cubit.dart';
@@ -33,10 +34,12 @@ class AddMealScreen extends StatelessWidget {
           child: Center(
             child: BlocConsumer<MenuCubit, MenuState>(
               listener: (context, state) {
-                if(state is AddDishSucessState){
-                  showToast(message: AppStrings.mealAddedSucessfully, state: ToastStates.success);
-                Navigator.pop(context);
-                BlocProvider.of<MenuCubit>(context).getAllMeals();
+                if (state is AddDishSucessState) {
+                  showToast(
+                      message: AppStrings.mealAddedSucessfully,
+                      state: ToastStates.success);
+                  Navigator.pop(context);
+                  BlocProvider.of<MenuCubit>(context).getAllMeals();
                 }
               },
               builder: (context, state) {
@@ -50,7 +53,10 @@ class AddMealScreen extends StatelessWidget {
                       Stack(
                         children: [
                           //image
-                          const CustomImage(imgPath: AppAssets.imagePicker),
+                          CustomFileImage(
+                            image: menuCubit.image,
+                            
+                          ),
                           //add icon button
                           Positioned.directional(
                               textDirection: Directionality.of(context),
@@ -64,14 +70,16 @@ class AddMealScreen extends StatelessWidget {
                                         return ImagePickerDilog(
                                           cameraOnTap: () {
                                             Navigator.pop(context);
-                                            pickImage(ImageSource.camera)
-                                                .then((value) => menuCubit.image=value);
+                                            pickImage(ImageSource.camera).then(
+                                                (value) =>
+                                                    menuCubit.takeImage(value));
                                           },
                                           gallreyOnTap: () {
                                             Navigator.pop(context);
 
-                                            pickImage(ImageSource.gallery)
-                                                .then((value) => menuCubit.image=value);
+                                            pickImage(ImageSource.gallery).then(
+                                                (value) =>
+                                                   menuCubit.takeImage(value));
                                           },
                                         );
                                       });
@@ -177,14 +185,17 @@ class AddMealScreen extends StatelessWidget {
                       ),
                       //add to menu button
                       SizedBox(height: 16.h),
-                    state is AddDishLoadingState?const CusotmLoadingIndicator():  CustomButton(
-                        onPressed: () {
-                          if(menuCubit.addToMenuKey.currentState!.validate()){
-                            menuCubit.addDishToMenu();
-                          }
-                        },
-                        text: AppStrings.addToMenu.tr(context),
-                      ),
+                      state is AddDishLoadingState
+                          ? const CusotmLoadingIndicator()
+                          : CustomButton(
+                              onPressed: () {
+                                if (menuCubit.addToMenuKey.currentState!
+                                    .validate()) {
+                                  menuCubit.addDishToMenu();
+                                }
+                              },
+                              text: AppStrings.addToMenu.tr(context),
+                            ),
                     ],
                   ),
                 );

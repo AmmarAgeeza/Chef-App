@@ -66,4 +66,9 @@ List<MealModel> meals=[];
           emit (GetAllChefMealsSucessState());
         });
   }
+  //take image from user
+  void takeImage(value){
+    image=value;
+    emit(TakeImageFromUser());
+  }
 }
