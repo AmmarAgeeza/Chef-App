@@ -31,7 +31,7 @@ void main() async {
           create: (context) => sl<HomeCubit>(),
         ),
         BlocProvider(
-          create: (context) => sl<MenuCubit>(),
+          create: (context) => sl<MenuCubit>()..getAllMeals(),
         ),
       ],
       child: const MyApp(),

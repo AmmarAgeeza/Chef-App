@@ -1,11 +1,14 @@
 import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:chef_app/core/utils/commons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../components/menu_item_component.dart';
+import '../cubit/menu_cubit.dart';
+import '../cubit/menu_state.dart';
 
 class MenuHomeScreen extends StatelessWidget {
   const MenuHomeScreen({super.key});
@@ -26,14 +29,22 @@ class MenuHomeScreen extends StatelessWidget {
                 text: AppStrings.addDishToMenu.tr(context),
               ),
               //items
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) => const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: MenuItemComponent(),
-                  ),
-                ),
+              BlocBuilder<MenuCubit, MenuState>(
+                builder: (context, state) {
+                  final menuCubit = BlocProvider.of<MenuCubit>(context);
+
+                  return Expanded(
+                    child: menuCubit.meals.isEmpty
+                        ? Text('No Meals')
+                        : ListView.builder(
+                            itemCount: menuCubit.meals.length,
+                            itemBuilder: (context, index) =>  Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: MenuItemComponent( model: menuCubit.meals[index]),
+                            ),
+                          ),
+                  );
+                },
               ),
             ],
           ),

@@ -31,7 +31,12 @@ class AddMealScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Center(
             child: BlocConsumer<MenuCubit, MenuState>(
-              listener: (context, state) {},
+              listener: (context, state) {
+                if(state is AddDishSucessState){
+                  showToast(message: AppStrings.mealAddedSucessfully, state: ToastStates.success);
+                Navigator.pop(context);
+                }
+              },
               builder: (context, state) {
                 final menuCubit = BlocProvider.of<MenuCubit>(context);
 
@@ -171,7 +176,11 @@ class AddMealScreen extends StatelessWidget {
                       //add to menu button
                       SizedBox(height: 16.h),
                       CustomButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if(menuCubit.addToMenuKey.currentState!.validate()){
+                            menuCubit.addDishToMenu();
+                          }
+                        },
                         text: AppStrings.addToMenu.tr(context),
                       ),
                     ],
