@@ -21,6 +21,7 @@ class MenuRepository {
     try {
       final response = await sl<ApiConsumer>().post(
         EndPoint.addMeal,
+        isFormData:true,
         data: {
           ApiKeys.name: mealName,
           ApiKeys.price: mealPrice,

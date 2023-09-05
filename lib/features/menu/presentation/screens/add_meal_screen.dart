@@ -1,4 +1,5 @@
 import 'package:chef_app/core/locale/app_locale.dart';
+import 'package:chef_app/core/widgets/cusotm_lodaing_indicator.dart';
 import 'package:chef_app/core/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,7 @@ class AddMealScreen extends StatelessWidget {
                 if(state is AddDishSucessState){
                   showToast(message: AppStrings.mealAddedSucessfully, state: ToastStates.success);
                 Navigator.pop(context);
+                BlocProvider.of<MenuCubit>(context).getAllMeals();
                 }
               },
               builder: (context, state) {
@@ -63,13 +65,13 @@ class AddMealScreen extends StatelessWidget {
                                           cameraOnTap: () {
                                             Navigator.pop(context);
                                             pickImage(ImageSource.camera)
-                                                .then((value) => null);
+                                                .then((value) => menuCubit.image=value);
                                           },
                                           gallreyOnTap: () {
                                             Navigator.pop(context);
 
                                             pickImage(ImageSource.gallery)
-                                                .then((value) => null);
+                                                .then((value) => menuCubit.image=value);
                                           },
                                         );
                                       });
@@ -175,7 +177,7 @@ class AddMealScreen extends StatelessWidget {
                       ),
                       //add to menu button
                       SizedBox(height: 16.h),
-                      CustomButton(
+                    state is AddDishLoadingState?const CusotmLoadingIndicator():  CustomButton(
                         onPressed: () {
                           if(menuCubit.addToMenuKey.currentState!.validate()){
                             menuCubit.addDishToMenu();

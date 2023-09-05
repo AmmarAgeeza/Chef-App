@@ -47,14 +47,14 @@ class MenuCubit extends Cubit<MenuState> {
       howToSell: groupVal,
       mealPrice: double.parse(mealPriceController.text),
     );
-    res.fold((l) => emit(AddDishErrorState()), (r) => AddDishSucessState());
+    res.fold((l) => emit(AddDishErrorState()), (r) => emit(AddDishSucessState()));
   }
 
   void deleteDish(id) async {
     emit(DeleteDishLoadingState());
     final res = await menuRepository.deleteMeal(id: id);
     res.fold(
-        (l) => emit(DeleteDishErrorState()), (r) => DeleteDishSucessState());
+        (l) => emit(DeleteDishErrorState()), (r) => emit(DeleteDishSucessState()));
   }
 List<MealModel> meals=[];
   void getAllMeals() async {
@@ -63,7 +63,7 @@ List<MealModel> meals=[];
     res.fold((l) => emit(GetAllChefMealsErrorState()),
         (r) {
           meals=r.meals;
-           GetAllChefMealsSucessState();
+          emit (GetAllChefMealsSucessState());
         });
   }
 }

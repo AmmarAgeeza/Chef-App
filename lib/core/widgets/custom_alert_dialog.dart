@@ -36,7 +36,7 @@ final VoidCallback confirmAction;
         ),
         //confirm text
         TextButton(
-          onPressed: () {},
+          onPressed: confirmAction,
           child: Text(
             AppStrings.ok.tr(context),
             style: Theme.of(context).textTheme.displayMedium!

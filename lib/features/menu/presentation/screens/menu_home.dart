@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/cusotm_lodaing_indicator.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../components/menu_item_component.dart';
 import '../cubit/menu_cubit.dart';
@@ -34,12 +35,12 @@ class MenuHomeScreen extends StatelessWidget {
                   final menuCubit = BlocProvider.of<MenuCubit>(context);
 
                   return Expanded(
-                    child: menuCubit.meals.isEmpty
-                        ? Text('No Meals')
+                    child: state is GetAllChefMealsLoadingState? const CusotmLoadingIndicator():menuCubit.meals.isEmpty
+                        ? const Text('No Meals')
                         : ListView.builder(
                             itemCount: menuCubit.meals.length,
                             itemBuilder: (context, index) =>  Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: MenuItemComponent( model: menuCubit.meals[index]),
                             ),
                           ),

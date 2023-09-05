@@ -1,4 +1,5 @@
 import 'package:chef_app/core/locale/app_locale.dart';
+import 'package:chef_app/core/widgets/cusotm_lodaing_indicator.dart';
 import 'package:chef_app/features/menu/data/models/meal_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,9 +41,9 @@ class MenuItemComponent extends StatelessWidget {
         ),
 
         const Spacer(),
-        BlocBuilder<MenuCubit, MenuState>(
+        BlocConsumer<MenuCubit, MenuState>(
           builder: (context, state) {
-            return IconButton(
+            return  IconButton(
               onPressed: () {
                 showDialog(
                     context: context,
@@ -52,6 +53,7 @@ class MenuItemComponent extends StatelessWidget {
                         confirmAction: () {
                           BlocProvider.of<MenuCubit>(context)
                               .deleteDish(model.id);
+                              Navigator.pop(context);
                         },
                       );
                     });
@@ -62,9 +64,15 @@ class MenuItemComponent extends StatelessWidget {
                 size: 40,
               ),
             );
-          },
+          }, listener: (BuildContext context, MenuState state) { 
+            if(state is DeleteDishSucessState){
+              BlocProvider.of<MenuCubit>(context).getAllMeals();
+            }
+           },
         ),
       ],
     );
   }
 }
+//1.naviagtor.pop
+//2.show CusotmLoadingIndicator
